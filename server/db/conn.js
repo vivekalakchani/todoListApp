@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose')
 
-const DB = process.env.DATABASE;
+const DB = process.env.DATABASE
 
 mongoose
   .connect(DB, {
@@ -8,4 +8,4 @@ mongoose
     useNewUrlParser: true,
   })
   .then(() => console.log('DATABASE connected'))
-  .catch((err) => console.log('error' + err.message));
+  .catch((err) => console.log('error' + err.message))

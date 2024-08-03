@@ -1,15 +1,13 @@
+require('dotenv').config()
 
-require("dotenv").config();
+const app = require('./src')
 
-const app= require('./src');
+const port = process.env.PORT
 
-const port= process.env.PORT;
+const onListeningLog = `server start at port no ${port}`
 
+const onListening = () => console.log(onListeningLog)
 
-const onListeningLog =`server start at port no ${port}`;
+app.listen(port, onListening())
 
-const onListening = ()=> console.log(onListeningLog);
-
-app.listen(port,onListening());
-
-module.exports=app;
+module.exports = app

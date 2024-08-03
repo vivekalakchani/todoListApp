@@ -1,11 +1,11 @@
+const express = require('express')
+const router = express.Router()
+const todoController = require('./controller')
+const auth = require('../user/middleware')
 
-const express = require('express');
-const router = express.Router();
+router.get('/', auth, todoController.getAllTodos)
+router.post('/', auth, todoController.createTodo)
+router.patch('/:todoId', auth, todoController.updateTodo)
+router.delete('/:todoId', auth, todoController.deleteTodo)
 
-// Define a sample route
-router.get('/', (req, res) => {
-  res.send('TodoList route');
-});
-
-// Export the router
-module.exports = router;
+module.exports = router

@@ -1,10 +1,8 @@
-const express = require('express');
-const router = express.Router();
+const express = require('express')
+const router = express.Router()
+const userController = require('./controller')
 
-// Define a sample route
-router.get('/', (req, res) => {
-  res.send('User route');
-});
+router.post('/register', userController.register)
+router.post('/login', userController.login)
 
-// Export the router
-module.exports = router;
+module.exports = router
