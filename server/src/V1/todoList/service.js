@@ -11,6 +11,11 @@ const getAllTodosData = async (
   return todos
 }
 
+const getTodoByIdData = async (todoId) => {
+  const todo = await Todo.findOne({ todoId })
+  return todo
+}
+
 const createTodoData = async (userId, topic, notes, dueDate) => {
   if (!userId) {
     throw new Error('User ID is required')
@@ -60,6 +65,7 @@ const deleteTodoData = async (todoId) => {
 }
 module.exports = {
   getAllTodosData,
+  getTodoByIdData,
   createTodoData,
   updateTodoData,
   deleteTodoData,

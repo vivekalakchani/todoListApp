@@ -1,23 +1,25 @@
 // src/App.js
 import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Header from "./components/Header";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import DashBoard from "./pages/DashBoard";
-import AllList from "./pages/AllList";
-import AddList from "./pages/AddList";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import TodoDetails from "./pages/TodoDetails";
+import TodoForm from "./components/Todo/TodoForm";
 
 const App = () => {
   return (
-    <Router>
-      <Header />
-      <AddList />
-      <main className="p-4">
+    <div className="App text-light">
+      <BrowserRouter>
         <Routes>
           <Route path="/" element={<DashBoard />} />
-          <Route path="/all-list" element={<AllList />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/todo/:id" element={<TodoDetails />} />
+          <Route path="/todoForm" element={<TodoForm />} />
         </Routes>
-      </main>
-    </Router>
+      </BrowserRouter>
+    </div>
   );
 };
 

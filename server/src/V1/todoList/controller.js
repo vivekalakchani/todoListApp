@@ -29,6 +29,18 @@ const getAllTodos = async (req, res) => {
   }
 }
 
+const getTodoById = async (req, res) => {
+  const { todoId } = req.params
+
+  try {
+    const todos = await Service.getTodoByIdData(todoId)
+    res.status(200).json(todos)
+  } catch (error) {
+    console.error(error.message)
+    res.status(400).send(error.message)
+  }
+}
+
 const createTodo = async (req, res) => {
   const { topic, notes, dueDate } = req.body
   const { userId } = req.query
@@ -74,6 +86,7 @@ const deleteTodo = async (req, res) => {
 }
 module.exports = {
   getAllTodos,
+  getTodoById,
   createTodo,
   updateTodo,
   deleteTodo,
