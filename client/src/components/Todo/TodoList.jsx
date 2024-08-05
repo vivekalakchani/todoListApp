@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { getTodos } from "../../Services/api"; // Adjust the import path as necessary
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import TodoArticle from "./TodoArticle"; // Import the new component
 
 const TodoList = () => {
   const [items, setItems] = useState([]);
@@ -101,34 +101,7 @@ const TodoList = () => {
           <div className="overflow-x-auto">
             <section className="mt-6 grid md:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-8">
               {items.map((item) => (
-                <article
-                  key={item.todoId}
-                  className={`bg-white group relative rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transform duration-200 ${
-                    item.completed ? "bg-green-100" : "bg-red-100"
-                  }`}
-                >
-                  <div className="px-3 py-4">
-                    <h3 className="text-sm text-gray-500 pb-2">
-                      <Link
-                        className={`py-1 px-2 text-white rounded-lg ${
-                          item.completed ? "bg-green-600" : "bg-red-600"
-                        }`}
-                        to={`/todo/${item.todoId}`} // Use 'to' instead of 'href'
-                      >
-                        {item.completed ? "Completed" : "Incomplete"}
-                      </Link>
-                    </h3>
-                    <p className="text-base font-semibold text-gray-900 group-hover:text-indigo-600">
-                      {item.topic}
-                    </p>
-                    <p className="text-base text-gray-700">{item.notes}</p>
-                    <p className="text-sm text-gray-500">
-                      {item.dueDate
-                        ? new Date(item.dueDate).toLocaleDateString()
-                        : "N/A"}
-                    </p>
-                  </div>
-                </article>
+                <TodoArticle key={item.todoId} item={item} />
               ))}
             </section>
           </div>

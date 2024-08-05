@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import DashBoard from "./pages/DashBoard";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import TodoDetails from "./pages/TodoDetails";
+import Details from "./pages/Details";
 import TodoForm from "./components/Todo/TodoForm";
 
 const App = () => {
@@ -15,7 +15,7 @@ const App = () => {
           <Route path="/" element={<DashBoard />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/todo/:id" element={<TodoDetails />} />
+          <Route path="/todo/:id" element={<Details />} />
           <Route path="/todoForm" element={<TodoForm />} />
         </Routes>
       </BrowserRouter>

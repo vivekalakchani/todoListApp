@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Header from "../Header";
-import { createTodo } from "../../Services/api"; // Adjust the import path as needed
+import { createTodo } from "../../Services/api";
 import { useSelector } from "react-redux";
 
 export default function TodoForm() {
@@ -54,16 +53,15 @@ export default function TodoForm() {
 
   return (
     <>
-      <Header />
-      <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
-        <div className="sm:mx-auto sm:w-full sm:max-w-sm">
+      <div className="flex min-h-screen flex-col justify-center px-6 py-12 lg:px-8 bg-gradient-to-br from-blue-100 via-purple-100 to-pink-100">
+        <div className="sm:mx-auto sm:w-full sm:max-w-lg">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="#4F46E5"
-            className="size-6 mx-auto h-10 w-auto"
+            className="mx-auto h-12 w-12 text-indigo-600"
           >
             <path
               strokeLinecap="round"
@@ -71,78 +69,76 @@ export default function TodoForm() {
               d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z"
             />
           </svg>
-          <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+          <h2 className="mt-8 text-center text-3xl font-bold leading-9 tracking-tight text-gray-800">
             Add Today's Task
           </h2>
         </div>
 
-        <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form className="space-y-6" onSubmit={handleSubmit}>
-            {error && <p className="text-red-500 text-center">{error}</p>}
+        <div className="mt-12 sm:mx-auto sm:w-full sm:max-w-lg">
+          <form
+            className="space-y-6 bg-white p-8 rounded-lg shadow-lg ring-1 ring-gray-900/10"
+            onSubmit={handleSubmit}
+          >
+            {error && <p className="text-red-500 text-center mb-4">{error}</p>}
+
             <div>
               <label
                 htmlFor="topic"
-                className="block text-sm font-medium leading-6 text-gray-900"
+                className="block text-sm font-medium text-gray-700 mb-2"
               >
                 Topic
               </label>
-              <div className="mt-2">
-                <input
-                  id="topic"
-                  name="topic"
-                  type="text"
-                  value={topic}
-                  onChange={(e) => setTopic(e.target.value)}
-                  required
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                />
-              </div>
+              <input
+                id="topic"
+                name="topic"
+                type="text"
+                value={topic}
+                onChange={(e) => setTopic(e.target.value)}
+                required
+                className="block w-full rounded-md border-0 py-2 px-4 text-gray-900 shadow-sm ring-1 ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-indigo-500"
+              />
             </div>
 
             <div>
               <label
                 htmlFor="notes"
-                className="block text-sm font-medium leading-6 text-gray-900"
+                className="block text-sm font-medium text-gray-700 mb-2"
               >
                 Notes
               </label>
-              <div className="mt-2">
-                <input
-                  id="notes"
-                  name="notes"
-                  type="text"
-                  value={notes}
-                  onChange={(e) => setNotes(e.target.value)}
-                  required
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                />
-              </div>
+              <input
+                id="notes"
+                name="notes"
+                type="text"
+                value={notes}
+                onChange={(e) => setNotes(e.target.value)}
+                required
+                className="block w-full rounded-md border-0 py-2 px-4 text-gray-900 shadow-sm ring-1 ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-indigo-500"
+              />
             </div>
 
             <div>
               <label
                 htmlFor="dueDate"
-                className="block text-sm font-medium leading-6 text-gray-900"
+                className="block text-sm font-medium text-gray-700 mb-2"
               >
                 Due Date
               </label>
-              <div className="mt-2">
-                <input
-                  id="dueDate"
-                  name="dueDate"
-                  type="date"
-                  value={dueDate}
-                  onChange={(e) => setDueDate(e.target.value)}
-                  required
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                />
-              </div>
+              <input
+                id="dueDate"
+                name="dueDate"
+                type="date"
+                value={dueDate}
+                onChange={(e) => setDueDate(e.target.value)}
+                required
+                className="block w-full rounded-md border-0 py-2 px-4 text-gray-900 shadow-sm ring-1 ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-indigo-500"
+              />
             </div>
 
             <div>
               <button
                 type="submit"
-                className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                className="w-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white px-4 py-2 rounded-md shadow-lg hover:from-indigo-400 hover:via-purple-400 hover:to-pink-400 transition"
               >
                 Submit
               </button>

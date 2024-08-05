@@ -12,7 +12,7 @@ const userRoutes = require('./V1/user/router')
 const todoListRoutes = require('./V1/todoList/router')
 
 // CORS setup
-const allowedOrigins = 'http://localhost:3000'
+const allowedOrigins = process.env.URL
 app.use(
   cors({
     origin: function (origin, callback) {
